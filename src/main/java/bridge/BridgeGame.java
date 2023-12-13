@@ -43,4 +43,14 @@ public class BridgeGame {
         validatorForRetryOrQuit(retryOrQuit);
         return Objects.equals(retryOrQuit, "R");
     }
-}
+
+    private void validatorForRetryOrQuit(String retryOrQuit) {
+        if (!isValidValueForRetryOrQuit(retryOrQuit)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_VALUE.getErrorMessage());
+        }
+    }
+
+    private boolean isValidValueForRetryOrQuit(String retryOrQuit) {
+        return Objects.equals(retryOrQuit, "R") || Objects.equals(retryOrQuit, "Q");
+    }
+

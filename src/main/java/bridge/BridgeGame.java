@@ -54,3 +54,11 @@ public class BridgeGame {
         return Objects.equals(retryOrQuit, "R") || Objects.equals(retryOrQuit, "Q");
     }
 
+    public String getMoving() {
+        return moving;
+    }
+
+    public int getMovingCount() {
+        return movingCount;
+    }
+}

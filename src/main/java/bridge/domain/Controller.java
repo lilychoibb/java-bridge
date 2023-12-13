@@ -57,6 +57,16 @@ public class Controller {
         return 3;
     }
 
+    public boolean inputRetry(BridgeGame bridgeGame) {
+        try {
+            String retryOrQuit = inputView.readGameCommand();
+            return bridgeGame.retry(retryOrQuit);
+        } catch (IllegalArgumentException e) {
+            System.out.println(ErrorMessage.INVALID_VALUE.getErrorMessage());
+            return inputRetry(bridgeGame);
+        }
+    }
+
     private BridgeSize inputBridgeSize() {
         try {
             int bridgeSize = inputView.readBridgeSize();

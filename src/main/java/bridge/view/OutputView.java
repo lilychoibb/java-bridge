@@ -33,3 +33,8 @@ public class OutputView {
         printMap(judgement);
     }
 
+    public void gameSuccessOrFail(String result) {
+        System.out.println();
+        System.out.print("게임 성공 여부: ");
+        System.out.println(result);
+    }

@@ -77,5 +77,13 @@ public class Controller {
         }
     }
 
+    private BridgeGame inputBridgeMoving() {
+        try {
+            String bridgeMoving = inputView.readMoving();
+            return new BridgeGame(bridgeMoving);
+        } catch (IllegalArgumentException e) {
+            System.out.println(ErrorMessage.INVALID_VALUE.getErrorMessage());
+            return inputBridgeMoving();
+        }
     }
 }

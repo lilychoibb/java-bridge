@@ -32,6 +32,26 @@ public class Controller {
 
         Judgement judgement = new Judgement(result);
         int gameTry = gameLoop(resultBridge, judgement);
+        int tryCount = 1;
+
+        while (gameTry == 1) {
+            tryCount += 1;
+            result = new ArrayList<>();
+            judgement = new Judgement(result);
+            gameTry = gameLoop(resultBridge, judgement);
+        }
+
+        if (gameTry == 2) {
+            outputView.gameSuccessOrFail("실패");
+        }
+
+        if (gameTry == 3) {
+            outputView.gameSuccessOrFail("성공");
+        }
+
+        outputView.tryCount(tryCount);
+    }
+
     public int gameLoop(List<String> resultBridge, Judgement judgement) {
         for (int i = 0; i < resultBridge.size(); i++) {
             BridgeGame bridgeGame = inputBridgeMoving();

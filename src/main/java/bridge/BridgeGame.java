@@ -1,5 +1,8 @@
 package bridge;
 
+import bridge.domain.ErrorMessage;
+import java.util.Objects;
+
 /**
  * 다리 건너기 게임을 관리하는 클래스
  */
@@ -21,6 +24,14 @@ public class BridgeGame {
         movingCount += 1;
     }
 
+    private void validator(String moving) {
+        if (!isValidValue(moving)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_VALUE.getErrorMessage());
+        }
+    }
+
+    private boolean isValidValue(String moving) {
+        return Objects.equals(moving, "U") || Objects.equals(moving, "D");
     }
 
     /**

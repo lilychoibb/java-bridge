@@ -15,7 +15,46 @@ public class Judgement {
         result.add(upBridge);
         result.add(downBridge);
     }
+
+    public boolean gameResult(List<String> resultBridge, BridgeGame bridgeGame) {
+        if (isMovingMatch(resultBridge, bridgeGame)) {
+            processMatchingMove(bridgeGame);
+            return true;
+        } else {
+            processNonMatchingMove(bridgeGame);
+            return false;
+        }
+    }
+
     private boolean isMovingMatch(List<String> resultBridge, BridgeGame bridgeGame) {
         return Objects.equals(resultBridge.get(bridgeGame.getMovingCount() - 1), bridgeGame.getMoving());
+    }
+
+    private void processMatchingMove(BridgeGame bridgeGame) {
+        if (Objects.equals(bridgeGame.getMoving(), "U")) {
+            upBridge.add("O");
+            downBridge.add(" ");
+        }
+
+        if (Objects.equals(bridgeGame.getMoving(), "D")) {
+            upBridge.add(" ");
+            downBridge.add("O");
+        }
+    }
+
+    private void processNonMatchingMove(BridgeGame bridgeGame) {
+        if (Objects.equals(bridgeGame.getMoving(), "U")) {
+            upBridge.add("X");
+            downBridge.add(" ");
+        }
+
+        if (Objects.equals(bridgeGame.getMoving(), "D")) {
+            upBridge.add(" ");
+            downBridge.add("X");
+        }
+    }
+
+    public List<List<String>> getResult() {
+        return result;
     }
 }

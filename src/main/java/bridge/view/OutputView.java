@@ -38,3 +38,9 @@ public class OutputView {
         System.out.print("게임 성공 여부: ");
         System.out.println(result);
     }
+
+    public void tryCount(int count) {
+        System.out.print("총 시도한 횟수: ");
+        System.out.println(count);
+    }
+}
